@@ -56,6 +56,12 @@ def send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level 
   for bit in binary_recepient:
     send_bit(gpio_pin, bit == '1')
 
+  if dimmer_level >= 0:
+    binary_dimmer_level = format(dimmer_level, '004b')
+
+    for bit in binary_dimmer_level:
+      send_bit(gpio_pin, bit == '1')
+
   # Done with command, send pause
   GPIO.output(gpio_pin, True)
   delay_microseconds(250)
@@ -65,7 +71,7 @@ def send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level 
 remote_id = 38309186
 
 for x in range(0,5):
-  send_nexa_message(pin_to_use, remote_id, 0, True)
+  send_nexa_message(pin_to_use, remote_id, 1, True, 15)
 
 GPIO.output(pin_to_use, True)
 GPIO.cleanup()
