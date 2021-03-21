@@ -1,0 +1,20 @@
+light:
+  - platform: mqtt
+    unique_id: "kjokkenspotter"
+    name: "Spotter"
+    state_topic: "kjokken/spots/status"
+    command_topic: "kjokken/spots/switch"
+    brightness_state_topic: 'kjokken/spots/brightness'
+    brightness_command_topic: 'kjokken/spots/brightness/set'
+    payload_off: "OFF"
+    on_command_type: 'brightness'
+
+  - platform: mqtt
+    name: "Øy"
+    unique_id: "kjokkenoy"
+    state_topic: "kjokken/oy/status"
+    command_topic: "kjokken/oy/switch"
+    brightness_state_topic: 'kjokken/oy/brightness'
+    brightness_command_topic: 'kjokken/oy/brightness/set'
+    payload_off: "OFF"
+    on_command_type: 'brightness'

@@ -1,11 +1,5 @@
-from datetime import datetime
 import RPi.GPIO as GPIO
 import time
-
-pin_to_use = 17
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin_to_use, GPIO.OUT)
 
 def delay_microseconds(microseconds):
   time.sleep(microseconds/1000000.)
@@ -46,7 +40,7 @@ def send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level 
   send_bit(gpio_pin, False)
 
   # Dimmer level or on off bit (on = 0, off = 1)
-  if dimmer_level >= 0:
+  if on_off and dimmer_level >= 0:
     send_encoded_bit(gpio_pin, False)
     send_encoded_bit(gpio_pin, False)
   else:
@@ -68,10 +62,13 @@ def send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level 
   GPIO.output(gpio_pin, False)
   delay_microseconds(10000)
 
-remote_id = 38309186
+def switch(gpio_pin, transmitter_id, recepient, on_off, dimmer_level = -1, repeats = 8):
+  GPIO.setmode(GPIO.BCM)
+  GPIO.setup(gpio_pin, GPIO.OUT)
 
-for x in range(0,5):
-  send_nexa_message(pin_to_use, remote_id, 1, True, 15)
+  for i in range(0,repeats):
+      send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level)
 
-GPIO.output(pin_to_use, True)
-GPIO.cleanup()
+  GPIO.cleanup()
+
+
