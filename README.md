@@ -1,9 +1,7 @@
 # Pi Nexa Controller
 
 This project describes the controller I use to control my kitchen lights at home. I use a
-cheap 433mhz transmitter connected to my Raspberry pi to control nexa kitchen lights in home assistant.
-
-This project connects to an MQTT broker and communicates with HASS through it.
+cheap 433mhz transmitter connected to my Raspberry Pi to control Nexa lights in Home Assistant.
 
 # Premise
 
