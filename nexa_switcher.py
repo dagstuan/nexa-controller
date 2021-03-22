@@ -62,7 +62,7 @@ def send_nexa_message(gpio_pin, transmitter_id, recepient, on_off, dimmer_level 
   GPIO.output(gpio_pin, False)
   delay_microseconds(10000)
 
-def switch(gpio_pin, transmitter_id, recepient, on_off, dimmer_level = -1, repeats = 8):
+def switch(gpio_pin, transmitter_id, recepient, on_off, dimmer_level = -1, repeats = 10):
   GPIO.setmode(GPIO.BCM)
   GPIO.setup(gpio_pin, GPIO.OUT)
 
