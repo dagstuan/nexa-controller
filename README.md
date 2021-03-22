@@ -5,6 +5,19 @@ cheap 433mhz transmitter connected to my Raspberry pi to control nexa kitchen li
 
 This project connects to an MQTT broker and communicates with HASS through it.
 
+# Premise
+
+When we moved into our new apartment, the kitchen was already equipped with [Nexa CMR-101](https://nexa.se/smarta-hem/systemnexa/inbyggnadsmottagare/cmr101) dimmers that was controlled through a wireless switch. I wanted control the lights with my phone as well. I used a Raspberry Pi with cheap 433mhz wireless transmitter/receivers for this project (like [these](https://www.digitalimpuls.no/tzt-teng/148082 433mhz-rf-transmitter-and-receiver-kit-for-arduino--raspberry-pi--dev-kort)).
+
+First I started with figuring out the ID of the remote I used to control the lights. This was done by listening
+for signals with the 433mhz receiver, and then plotting them and manually reading the manchester encoded signal. The
+protocol of the signal used is described [here](https://homeeasyhacking.fandom.com/wiki/Advanced_Protocol).
+
+[This](https://www.instructables.com/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/) blog was also very helpful for
+reading the signals.
+
+After I figured out my remote ID, I wrote a small Python library (heavily influenced by already existing libraries for this use case) to control the lights, as well as an MQTT-client so I could integrate with Home Assistant that was already running on the Pi.
+
 # Setup
 
 Run `./setup.sh` to set up a docker container connecting to the MQTT broker. The script also expects
