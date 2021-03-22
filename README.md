@@ -5,7 +5,7 @@ cheap 433mhz transmitter connected to my Raspberry Pi to control Nexa lights in 
 
 # Premise
 
-When we moved into our new apartment, the kitchen was already equipped with [Nexa CMR-101](https://nexa.se/smarta-hem/systemnexa/inbyggnadsmottagare/cmr101) dimmers that was controlled through a wireless switch. I wanted control the lights with my phone as well. I used a Raspberry Pi with cheap 433mhz wireless transmitter/receivers for this project (like [these](https://www.digitalimpuls.no/tzt-teng/148082 433mhz-rf-transmitter-and-receiver-kit-for-arduino--raspberry-pi--dev-kort)).
+When we moved into our new apartment, the kitchen was already equipped with [Nexa CMR-101](https://nexa.se/smarta-hem/systemnexa/inbyggnadsmottagare/cmr101) dimmers that was controlled through a wireless switch. I wanted control the lights with my phone as well. I used a Raspberry Pi with cheap 433mhz wireless transmitter/receivers for this project (like [these](https://www.digitalimpuls.no/tzt-teng/148082/433mhz-rf-transmitter-and-receiver-kit-for-arduino--raspberry-pi--dev-kort)).
 
 First I started with figuring out the ID of the remote I used to control the lights. This was done by listening
 for signals with the 433mhz receiver, and then plotting them and manually reading the manchester encoded signal. The
