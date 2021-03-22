@@ -34,6 +34,10 @@ pip3 install rpi.gpio
 pip3 install paho-mqtt
 ```
 
+# Demo
+
+A demo of a working setup controlling Nexa lights through Apple HomeKit and Home Assistant can be found here: https://youtu.be/HXku3B9_a_I
+
 # Links
 
 https://www.instructables.com/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/
