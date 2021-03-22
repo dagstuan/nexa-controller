@@ -24,3 +24,18 @@ password = [password]
 
 Home assistant must also be configured to publish/subscribe to the MQTT-broker. A sample setup is found
 in `hass-setup.yml`
+
+# Development
+
+The code is written for Python 3. To run the code outside of Docker you need two packages. `rpi.gpio` and `paho-mqtt`
+
+```
+pip3 install rpi.gpio
+pip3 install paho-mqtt
+```
+
+# Links
+
+https://www.instructables.com/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/
+https://homeeasyhacking.fandom.com/wiki/Advanced_Protocol
+https://github.com/henrikjonhed/NexaTransmitterRPi
