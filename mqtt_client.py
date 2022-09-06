@@ -9,6 +9,7 @@ config.read_file(open(r'config.cfg'))
 
 gpio_pin_to_use = int(config.get('config', 'gpio_pin'))
 remote_id = int(config.get('config', 'remote_id'))
+repeats = int(config.get('config', 'repeats'))
 
 host = config.get('mqtt', 'host')
 port = int(config.get('mqtt', 'port'))
@@ -87,7 +88,7 @@ def turn_off_light(light_id, state_topic):
   client.publish(state_topic, payload_off)
 
 def toggle_light(light_id, on_off_state, dimmer_level = -1):
-  nexa_switcher.switch(gpio_pin_to_use, remote_id, light_id, on_off_state, dimmer_level)
+  nexa_switcher.switch(gpio_pin_to_use, remote_id, light_id, on_off_state, dimmer_level, repeats)
 
 def on_disconnect(client, userdata, rc):
     print("disconnecting reason  "  +str(rc))
