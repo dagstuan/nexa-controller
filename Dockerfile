@@ -1,4 +1,4 @@
-FROM arm32v7/python:3
+FROM arm32v7/python:3.10.6-bullseye
 
 RUN apt-get update
 RUN apt-get -y upgrade
@@ -9,10 +9,10 @@ COPY nexa_switcher.py .
 COPY config.cfg .
 COPY requirements.txt .
 
-# Fix build of RPi.GPIO
-ENV CFLAGS=-fcommon
-RUN pip3 install -r requirements.txt
+ENV PIP_ROOT_USER_ACTION=ignore
+RUN pip install --upgrade pip
+RUN pip install --root-user-action=ignore -r requirements.txt
 
 LABEL com.centurylinklabs.watchtower.enable="false"
 
-CMD ["python3", "-u", "mqtt_client.py"]
+CMD ["python", "-u", "mqtt_client.py"]
