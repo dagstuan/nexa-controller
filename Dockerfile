@@ -6,7 +6,6 @@ RUN apt-get -y upgrade
 WORKDIR /usr/src/app
 COPY mqtt_client.py .
 COPY nexa_switcher.py .
-COPY config.cfg .
 COPY requirements.txt .
 
 ENV PIP_ROOT_USER_ACTION=ignore
