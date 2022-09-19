@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: nexa-mqtt-controller
+  IMAGE_NAME: dagstuan/nexa-mqtt-controller
 
 jobs:
   docker:
