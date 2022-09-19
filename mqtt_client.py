@@ -1,20 +1,16 @@
 import paho.mqtt.client as mqtt
 import nexa_switcher
 import math
+from decouple import config
 
-import configparser
+gpio_pin_to_use = int(config('GPIO_PIN'))
+remote_id = int(config('REMOTE_ID'))
+repeats = int(config('REPEATS'))
 
-config = configparser.ConfigParser()
-config.read_file(open(r'config.cfg'))
-
-gpio_pin_to_use = int(config.get('config', 'gpio_pin'))
-remote_id = int(config.get('config', 'remote_id'))
-repeats = int(config.get('config', 'repeats'))
-
-host = config.get('mqtt', 'host')
-port = int(config.get('mqtt', 'port'))
-username = config.get('mqtt', 'username')
-password = config.get('mqtt', 'password')
+host = config('MQTT_HOST')
+port = int(config('MQTT_PORT'))
+username = config('MQTT_USERNAME')
+password = config('MQTT_PASSWORD')
 
 light_id_spots = 0 # Id in Nexa
 state_topic_spots = "kjokken/spots/status"

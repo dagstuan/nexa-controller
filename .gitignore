@@ -1,7 +1,8 @@
 .DS_Store
 
 __pycache__
-config.cfg
 
 rf-graph-plot/output*
 rf-graph/output*
+
+.env
