@@ -34,4 +34,4 @@ jobs:
           context: .
           platforms: linux/arm32
           push: true
-          tags: latest
+          tags: ghcr.io/dagstuan/nexa-mqtt-controller:latest
