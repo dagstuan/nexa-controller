@@ -12,6 +12,9 @@ port = int(config('MQTT_PORT'))
 username = config('MQTT_USERNAME')
 password = config('MQTT_PASSWORD')
 
+print("Will use GPIO pin ", gpio_pin_to_use, "to communicate. Remote id: ", remote_id, ". Repeats: ", repeats)
+print("Will publish to ", host, " with port ", port)
+
 light_id_spots = 0 # Id in Nexa
 state_topic_spots = "kjokken/spots/status"
 command_topic_spots = "kjokken/spots/switch"
