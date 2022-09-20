@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: dagstuan/nexa-mqtt-controller
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   docker:
@@ -28,10 +28,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PUBLISH_TOKEN }}
 
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/arm32
           push: true
-          tags: ghcr.io/dagstuan/nexa-mqtt-controller:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
