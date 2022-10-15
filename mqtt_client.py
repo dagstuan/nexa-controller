@@ -53,14 +53,14 @@ def on_message(client, userdata, message):
     dimmer_level = 15 if on_off_state else -1
 
     toggle_light(light_id_spots, on_off_state, dimmer_level)
-    client.publish(state_topic_spots, payload)
+    client.publish(state_topic_spots, payload, retain=True)
 
   if (message.topic == command_topic_oy):
     on_off_state = payload == payload_on
     dimmer_level = 15 if on_off_state else -1
 
     toggle_light(light_id_oy, on_off_state, dimmer_level)
-    client.publish(state_topic_oy, payload)
+    client.publish(state_topic_oy, payload, retain=True)
 
   if (message.topic == brightness_command_topic_spots):
     dimmer_level = math.floor(15/255 * int(payload))
@@ -69,8 +69,8 @@ def on_message(client, userdata, message):
       turn_off_light(light_id_spots, state_topic_spots)
     else:
       toggle_light(light_id_spots, True, dimmer_level)
-      client.publish(brightness_state_topic_spots, payload)
-      client.publish(state_topic_spots, payload_on)
+      client.publish(brightness_state_topic_spots, payload, retain=True)
+      client.publish(state_topic_spots, payload_on, retain=True)
 
   if (message.topic == brightness_command_topic_oy):
     dimmer_level = math.floor(15/255 * int(payload))
@@ -79,12 +79,12 @@ def on_message(client, userdata, message):
       turn_off_light(light_id_oy, state_topic_oy)
     else:
       toggle_light(light_id_oy, True, dimmer_level)
-      client.publish(brightness_state_topic_oy, payload)
-      client.publish(state_topic_oy, payload_on)
+      client.publish(brightness_state_topic_oy, payload, retain=True)
+      client.publish(state_topic_oy, payload_on, retain=True)
 
 def turn_off_light(light_id, state_topic):
   toggle_light(light_id, False, -1)
-  client.publish(state_topic, payload_off)
+  client.publish(state_topic, payload_off, retain=True)
 
 def toggle_light(light_id, on_off_state, dimmer_level = -1):
   nexa_switcher.switch(gpio_pin_to_use, remote_id, light_id, on_off_state, dimmer_level, repeats)
