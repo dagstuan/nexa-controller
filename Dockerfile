@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.10.6-bullseye
+FROM arm64v8/python:3.13.5-bookworm
 
 RUN apt-get update
 RUN apt-get -y upgrade
